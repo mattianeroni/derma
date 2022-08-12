@@ -1,0 +1,32 @@
+{
+  "name": "skinapp",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "expo start --dev-client",
+    "android": "expo run:android",
+    "ios": "expo run:ios",
+    "web": "expo start --web"
+  },
+  "dependencies": {
+    "@expo/metro-config": "^0.3.21",
+    "@expo/webpack-config": "^0.16.19",
+    "expo": "^46.0.6",
+    "expo-splash-screen": "~0.16.1",
+    "expo-status-bar": "~1.4.0",
+    "jest-expo": "^46.0.1",
+    "react": "18.0.0",
+    "react-dom": "18.0.0",
+    "react-native": "0.69.4",
+    "react-native-image-picker": "^4.8.5",
+    "react-native-web": "~0.18.7",
+    "expo-camera": "~12.3.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.9"
+  },
+  "private": true,
+  "author": "Mattia Neroni Ph.D. Eng.",
+  "license": "ISC",
+  "description": ""
+}
