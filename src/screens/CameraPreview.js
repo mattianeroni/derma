@@ -1,6 +1,5 @@
 import React from 'react';
 import {Text, View, TouchableOpacity, ImageBackground} from 'react-native';
-//import {styles} from './styles';
 
 export const CameraPreview = ({photo, retakePicture, savePhoto}) => {
     
