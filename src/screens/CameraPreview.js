@@ -1,7 +1,10 @@
+import React from 'react';
+import {Text, View, TouchableOpacity, ImageBackground} from 'react-native';
 //import {styles} from './styles';
 
-const CameraPreview = ({photo, retakePicture, savePhoto}) => {
-    console.log('sdsfds', photo)
+export const CameraPreview = ({photo, retakePicture, savePhoto}) => {
+    
+
     return (
       <View
         style={{
@@ -36,38 +39,26 @@ const CameraPreview = ({photo, retakePicture, savePhoto}) => {
                 style={{
                   width: 130,
                   height: 40,
-  
                   alignItems: 'center',
-                  borderRadius: '4'
+                  justifyContent: 'center',
+                  borderRadius: 4,
+                  backgroundColor: '#14274e'
                 }}
               >
-                <Text
-                  style={{
-                    color: '#fff',
-                    fontSize: 20
-                  }}
-                >
-                  Re-take
-                </Text>
+                <Text style={{ color: '#fff', fontSize: 20}}> NewPicture </Text>
               </TouchableOpacity>
               <TouchableOpacity
                 onPress={savePhoto}
                 style={{
                   width: 130,
                   height: 40,
-  
                   alignItems: 'center',
-                  borderRadius: '4'
+                  justifyContent: 'center',
+                  borderRadius: 4,
+                  backgroundColor: '#14274e'
                 }}
               >
-                <Text
-                  style={{
-                    color: '#fff',
-                    fontSize: 20
-                  }}
-                >
-                  save photo
-                </Text>
+                <Text style={{ color: '#fff', fontSize: 20}}> Diagnosis </Text>
               </TouchableOpacity>
             </View>
           </View>

@@ -16,26 +16,49 @@ export default function App() {
   const [capturedImage, setCapturedImage] = React.useState(null);
   const [cameraType, setCameraType] = React.useState(Camera.Constants.Type.back);
   const [flashMode, setFlashMode] = React.useState('off');
+  const [desease, setDisease] = React.useState(null);
 
   const __startCamera = async () => {
     const {status} = await Camera.requestCameraPermissionsAsync();
     if (status === 'granted')
       setStartCamera(true);
     else 
-      Alert.alert('Access denied');
+      Alert.alert('Access to camera denied.');
   }
 
 
   const __takePicture = async () => {
     const photo = await camera.takePictureAsync();
-    //console.log(photo);
     setPreviewVisible(true);
-    setStartCamera(false);
+    //setStartCamera(false);
     setCapturedImage(photo);
   }
 
 
-  const __savePhoto = async () => {
+  const __savePhoto = async (image) => {
+    await fetch( "http://192.168.0.10:8000" ,{
+       method:'POST',
+       headers: {
+        'Accept':'application/json',
+        'Content-Type': "multipart/form-data",
+        'Access-Control-Allow-Methods': 'POST, GET',
+        'Access-Control-Allow-Origin':'*',
+        'crossDomain': 'true'
+       },
+       //body: JSON.stringify({image})
+     }) 
+      .then((res) => res.json())
+      .then((res) => {
+        console.log(JSON.stringify(res));
+        //if(res.status == 200)
+        //  console.log(JSON.stringify(res));
+    })
+    .catch((error) => {
+        //console.log(JSON.stringify(error.message));
+        Alert.alert('Server Error.');
+        //throw error;
+      });
+
 
   }
 
@@ -64,8 +87,14 @@ export default function App() {
       setCameraType('back');
   }
 
+
   return (
-    <View style={styles.container}>
+    <View style={{
+      flex: 1,
+      backgroundColor: '#fff',
+      alignItems: 'center',
+      justifyContent: 'center'
+    }}>
       {startCamera ? (
         <View
           style={{
@@ -74,7 +103,7 @@ export default function App() {
           }}
         >
           {previewVisible && capturedImage ? (
-            <CameraPreview photo={capturedImage} savePhoto={__savePhoto} retakePicture={__retakePicture} />
+            <CameraPreview photo={capturedImage} savePhoto={() => __savePhoto(capturedImage)} retakePicture={__retakePicture} />
           ) : (
             <Camera
               type={cameraType}
@@ -110,11 +139,7 @@ export default function App() {
                       width: 25
                     }}
                   >
-                    <Text
-                      style={{
-                        fontSize: 20
-                      }}
-                    >
+                    <Text style={{ fontSize: 20 }}>
                       ⚡️
                     </Text>
                   </TouchableOpacity>
@@ -127,11 +152,7 @@ export default function App() {
                       width: 25
                     }}
                   >
-                    <Text
-                      style={{
-                        fontSize: 20
-                      }}
-                    >
+                    <Text style={{fontSize: 20}}>
                       {cameraType === 'front' ? '🤳' : '📷'}
                     </Text>
                   </TouchableOpacity>
