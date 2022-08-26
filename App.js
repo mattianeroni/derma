@@ -1,10 +1,11 @@
 import React from 'react';
-import {Text, View, TouchableOpacity, Alert} from 'react-native';
+import axios from 'axios';
+import {Text, View, TouchableOpacity, Alert, ImagePicker} from 'react-native';
 import {StatusBar} from 'expo-status-bar';
 import {Camera} from 'expo-camera';
+import { manipulateAsync, SaveFormat } from 'expo-image-manipulator';
 
 import {CameraPreview} from './src/screens/CameraPreview';
-import {styles} from './src/screens/Styles';
 
 
 export default function App() {
@@ -35,31 +36,38 @@ export default function App() {
   }
 
 
-  const __savePhoto = async (image) => {
-    await fetch( "http://192.168.0.10:8000" ,{
-       method:'POST',
-       headers: {
-        'Accept':'application/json',
-        'Content-Type': "multipart/form-data",
-        'Access-Control-Allow-Methods': 'POST, GET',
-        'Access-Control-Allow-Origin':'*',
-        'crossDomain': 'true'
-       },
-       //body: JSON.stringify({image})
-     }) 
-      .then((res) => res.json())
-      .then((res) => {
-        console.log(JSON.stringify(res));
-        //if(res.status == 200)
-        //  console.log(JSON.stringify(res));
+  const __savePhoto = async () => {
+
+
+    let resizedImage = await manipulateAsync(
+       capturedImage.uri,
+       [{ resize: { width: 512, height: 512 } }],
+       { compress: 0, format: SaveFormat.JPEG, base64: false }
+    );
+    
+    let data = new FormData();
+    data.append("file", {
+      uri: resizedImage.uri,
+      type: "image/jpeg",
+      name: "image.jpeg"
+    });
+
+    await axios({
+      url    : "http://192.168.0.10:8000",
+      method : 'POST',
+      data   : data,
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'multipart/form-data'
+      }
+    })
+    .then((res) => {
+      console.log(JSON.stringify(res.data));
     })
     .catch((error) => {
-        //console.log(JSON.stringify(error.message));
-        Alert.alert('Server Error.');
-        //throw error;
-      });
-
-
+     Alert.alert(`Server Error: ${error.message}`);
+     //throw error;
+   });
   }
 
 
@@ -103,7 +111,7 @@ export default function App() {
           }}
         >
           {previewVisible && capturedImage ? (
-            <CameraPreview photo={capturedImage} savePhoto={() => __savePhoto(capturedImage)} retakePicture={__retakePicture} />
+            <CameraPreview photo={capturedImage} savePhoto={ __savePhoto} retakePicture={__retakePicture} />
           ) : (
             <Camera
               type={cameraType}
