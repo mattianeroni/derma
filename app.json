@@ -1,11 +1,11 @@
 {
   "expo": {
-    "name": "skinapp",
-    "slug": "skinapp",
+    "name": "derma",
+    "slug": "derma",
     "version": "1.0.0",
     "assetBundlePatterns": [
       "**/*"
     ]
   },
-  "name": "skinapp"
+  "name": "derma"
 }
