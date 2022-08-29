@@ -58,6 +58,7 @@
 Derma application is essentially made of 5 simple screens. A quick overview is reported below.
 
 ##### Home page
+Once arrived to the home page, just click the button `Take a picture` to open the camera.
 
 
 
