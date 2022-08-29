@@ -58,9 +58,18 @@
 Derma application is essentially made of 5 simple screens. A quick overview is reported below.
 
 ##### Home page
-Once arrived to the home page, just click the button `Take a picture` to open the camera.
+Once arrived to the home page, just click the button `Take picture` to open the camera.
 
-![Home](images/Screenshot_20220829-170101_ExpoGo.jpg)
+<div align="center">
+<img src="images/Screenshot_20220829-170101_ExpoGo.jpg" width="20%" height="20%"/>
+</div>
+
+##### Camera
+After requiring the permissions needed, the app will open the camera, where the user has the possibility to switch on the flash and use both front and back cameras. Just take a picture to the interested area of the skin.
+
+<div align="center">
+<img src="images/Screenshot_20220829-170144_ExpoGo.jpg" width="20%" height="20%"/>
+</div>
 
 
 
