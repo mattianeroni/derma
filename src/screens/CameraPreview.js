@@ -3,7 +3,6 @@ import {Text, View, TouchableOpacity, ImageBackground} from 'react-native';
 
 export const CameraPreview = ({photo, retakePicture, savePhoto}) => {
     
-
     return (
       <View
         style={{
