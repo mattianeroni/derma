@@ -68,9 +68,29 @@ Once arrived to the home page, just click the button `Take picture` to open the 
 After requiring the permissions needed, the app will open the camera, where the user has the possibility to switch on the flash and use both front and back cameras. Just take a picture to the interested area of the skin.
 
 <div align="center">
-<img src="images/Screenshot_20220829-170144_ExpoGo.jpg" width="20%" height="20%"/>
+<img src="images/Screenshot_20220829-170144_ExpoGo.jpg" width="20%" height="20%">
 </div>
 
+##### Confirmation
+Once token the picture, the user will have the possibility take a new one (in case the first picture was not satisfactory) or send the image to the server for the diagnosis.
+
+<div align="center">
+<img src="images/Screenshot_20220829-170309_ExpoGo.jpg" width="20%" height="20%">
+</div>
+
+##### Diagnosis
+The server executes the above mentioned Convolutional Neural Network (CNN) model (i.e., EfficientNet) and provides a response.
+
+<div align="center">
+<img src="images/Screenshot_20220829-170208_ExpoGo.jpg" width="20%" height="20%">
+</div>
+
+##### Experts
+Finally, in the last page, the application provides a dynamic overview of the associated doctors and dermatologists in close proximity to the user, so that he/she can go and seek more reliable and trustworthy consultancy.
+
+<div align="center">
+<img src="images/Screenshot_20220829-170231_ExpoGo.jpg" width="20%" height="20%">
+</div>
 
 
 
