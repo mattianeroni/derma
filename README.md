@@ -13,13 +13,16 @@
   <h1 align="center">Derma</h1>
 
   <a href="https://github.com/mattianeroni/derma">
-    <img src="images/logo.jpg" alt="Logo" width="260" height="450">
+    <img src="images/logo.jpg" alt="Logo" width="300" height="450">
   </a>
   
   
   
   <p align="justify">
-    Derma is a mobile application for Android and iOS for detection and recognition of skin deseases. This repository is dedicated exclusively to the mobile application. All the 'intelligence' of the application is supposed to be implemented in the server. The application is able to detect from a picture 9 different kinds of skin desease, and the classification is carried out through a fine tuned EfficientNet model. The application is therefore making use of Artificial Intelligence (AI) to identify an eventual skin illness. It is designed to be simple and easy-to-use.
+    Derma is a <b>mobile application for Android and iOS</b> for detection and recognition of skin deseases. This repository is currently dedicated exclusively to the mobile application, while all the 'intelligence' of the application is supposed to be implemented in the server. 
+  </p>
+  <p align="justify">  
+    The application is able to detect from a picture <b>9 different kinds of skin desease</b>, and the classification is carried out through a fine tuned <b>EfficientNet</b> model. The application is therefore making use of Artificial Intelligence (AI) to identify an eventual skin illness. It is designed to be simple and easy-to-use.
   </p>
 
 </div>
