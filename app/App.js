@@ -1,10 +1,11 @@
 import React from 'react';
 import axios from 'axios';
-import {Text, View, TouchableOpacity, Alert} from 'react-native';
+import {View, Alert} from 'react-native';
 import {Camera} from 'expo-camera';
 import {StatusBar} from 'expo-status-bar';
 import { manipulateAsync, SaveFormat } from 'expo-image-manipulator';
 import * as Location from 'expo-location';
+import {SERVER_URL, AUTHORIZATION_TOKEN} from 'react-native-dotenv';
 
 
 import {Home, CameraPreview, DeseasePresentation, SkinCamera, ExpertsView} from './src/screens';
@@ -81,7 +82,9 @@ export default function App() {
 
   const __savePhoto = async () => {
 
-    // To remove once connected to the server
+    /*
+    // ---------------------------------------------------------------------------
+    // Used just for mockup
     let responseData = {
       name: "Mole",
       desc: "A benign (not cancer) growth on the skin that is formed by a cluster of melanocytes (cells that make a substance called melanin, which gives color to skin and eyes). A mole is usually dark and may be raised from the skin. Also called nevus."
@@ -92,9 +95,9 @@ export default function App() {
     setPreviewVisible(false);
     setStartCamera(false);
     setCamera(null);
-    // --------------------------------
-    
-    /*
+    // ---------------------------------------------------------------------------
+    */
+
     let resizedImage = await manipulateAsync(
        capturedImage.uri,
        [{ resize: { width: 512, height: 512 } }],
@@ -109,24 +112,30 @@ export default function App() {
     });
 
     await axios({
-      url    : "http://192.168.0.10:8000",
+      url    : SERVER_URL,
       method : 'POST',
       data   : data,
       headers: {
         'Accept': 'application/json',
-        'Content-Type': 'multipart/form-data'
+        'Content-Type': 'multipart/form-data',
+        'Authorization': AUTHORIZATION_TOKEN,
       }
     })
     .then((res) => {
-      let data = res.data;
-      //console.log(JSON.stringify(data));
-      setDisease(data);
+      let responseData = res.data;
+      
+      console.log(JSON.stringify(responseData));
+      
+      setDisease(responseData);
+      setCapturedImage(null);
+      setPreviewVisible(false);
+      setStartCamera(false);
+      setCamera(null);
     })
     .catch((error) => {
      Alert.alert(`Server Error: ${error.message}`);
      //throw error;
    });
-   */
   }
 
 
@@ -152,8 +161,9 @@ export default function App() {
 
     /*
     await axios({
-      url    : "http://192.168.0.10:8000/esperts",
+      url    : `${SERVER_URL}/esperts`,
       method : 'GET',
+      headers: AUTHORIZATION_TOKEN,
     })
     .then((res) => {
       setExperts(res.data.experts);
