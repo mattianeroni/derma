@@ -28,7 +28,7 @@ export function ExpertsView ({experts, goHome, currentLocation}) {
                 onRegionChangeComplete={region => setRegion(region)}>
             
                 {experts && experts.map((expert, index) => (
-                    <Marker key={expert.name} 
+                    <Marker key={expert.id} 
                         title={expert.name} 
                         description={ `Address: ${expert.address}  Website: ${expert.website}`} 
                         coordinate={{latitude: expert.latitude, longitude: expert.longitude}} 

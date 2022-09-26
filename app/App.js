@@ -97,16 +97,19 @@ export default function App() {
     setCamera(null);
     // ---------------------------------------------------------------------------
     */
-
+    
+    // Resize image if the communication is slow
+    /*
     let resizedImage = await manipulateAsync(
        capturedImage.uri,
-       [{ resize: { width: 512, height: 512 } }],
+       [{ resize: { width: 3024, height: 3024 } }],
        { compress: 0, format: SaveFormat.JPEG, base64: false }
     );
-    
+    */
+
     let data = new FormData();
     data.append("file", {
-      uri: resizedImage.uri,
+      uri: capturedImage.uri,
       type: "image/jpeg",
       name: "image.jpeg"
     });
@@ -124,7 +127,7 @@ export default function App() {
     .then((res) => {
       let responseData = res.data;
       
-      console.log(JSON.stringify(responseData));
+      //console.log(JSON.stringify(responseData));
       
       setDisease(responseData);
       setCapturedImage(null);
@@ -152,27 +155,34 @@ export default function App() {
     let {latitude, longitude} = location.coords;
     setCurrentLocation({latitude, longitude, latitudeDelta: 0.009, longitudeDelta: 0.009}); 
     
-    
-    setExperts([
+
+    // ---------------------------------------------------------------------------
+    // Used just for mockup
+    /*setExperts([
       {name: "Luca", address: "Via Paoli, 12", website: "www.luca.it", latitude, longitude },
       {name: "Marco", address: "Via Pinco, 23", website: "www.uaaa.it", latitude: 44.60, longitude: 11.002 }
-    ]);
+    ]);*/
+    // ---------------------------------------------------------------------------
 
-
-    /*
+    
     await axios({
-      url    : `${SERVER_URL}/esperts`,
+      url    : `${SERVER_URL}/experts`,
       method : 'GET',
-      headers: AUTHORIZATION_TOKEN,
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'multipart/form-data',
+        'Authorization': AUTHORIZATION_TOKEN,
+      }
     })
     .then((res) => {
-      setExperts(res.data.experts);
+      console.log(res.data);
+      setExperts(res.data);
     })
     .catch((error) => {
      Alert.alert(`Server Error: ${error.message}`);
      //throw error;
    });
-   */
+   
   }
 
   
