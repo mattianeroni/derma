@@ -18,7 +18,12 @@ from typing import List, Optional
 
 app = FastAPI(title="Derma", docs_url="/docs", redoc_url="/redocs", openapi_url=None)
 
-
+# To initialise the database
+#@app.on_event("startup")
+#async def startup():
+#    async with engine.begin() as conn:
+#        await conn.run_sync(Base.metadata.drop_all)
+#        await conn.run_sync(Base.metadata.create_all)
 
 #@app.middleware("http")
 #async def verify_authorization(request: Request, call_next):
