@@ -19,7 +19,7 @@
   
   
   <p align="justify">
-    Derma is a <b>mobile application for Android and iOS</b> for detection and recognition of skin deseases. This repository is currently dedicated exclusively to the mobile application, while all the 'intelligence' of the application is supposed to be implemented in the server. 
+    Derma is a <b>mobile application for Android and iOS</b> for detection and recognition of skin deseases. This repository contains both the mobile application written in React Native, and the server code to manage the database and the ML model. 
   </p>
   <p align="justify">  
     The application is able to detect from a picture <b>9 different kinds of skin desease</b>, and the classification is carried out through a fine tuned <b>EfficientNet</b> model. The application is therefore making use of Artificial Intelligence (AI) to identify an eventual skin illness. It is designed to be simple and easy-to-use.
@@ -47,7 +47,8 @@
 - [Built With](#built-with)
 - [About the project](#about-the-project)
 - [Architecture](#architecture)
-- [To Do](#todo)
+- [Todo Before Usage](#todo-before-usage)
+- [Todo Development](#todo-development)
 - [Contact](#contact)
 
 
@@ -97,6 +98,8 @@ Finally, in the last page, the application provides a dynamic overview of the as
 ### Built With
 
 * [ReactNative](https://reactnative.dev/)
+* [FastAPI](https://fastapi.tiangolo.com/)
+* [SQLAlchemy](https://www.sqlalchemy.org/)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -108,15 +111,23 @@ Finally, in the last page, the application provides a dynamic overview of the as
 
 ## Architecture
 
+The application has a classic *server side model* application, and, as visible in this very nice draw, it is made of a mobile application that is communicating with a server where a database and the machine learning model can be found.
+
+Every time a request is sent to the server, the request headers must contain an authorization code that is verified by the server middleware.
+
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
-## Todo
+## Todo Before Usage
 
-- [ ] Update the server IP address
-- [ ] Define a token for the communication with the server
+- [ ] Update the variables in the `.env` files both in the application and in the server. 
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+
+## Todo Development
 - [ ] Test on iOS
-- [ ] Implement the server backend
+- [ ] The middleware is currently not working, probably because the *SQLAlchemy Async Session* doesn't work well with *aiosqlite*. An [issue](https://stackoverflow.com/questions/73854952/fastapi-aiosqlite-asyncsession-exception-closing-connection) is currently open on Stackoverflow.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -126,6 +137,8 @@ Finally, in the last page, the application provides a dynamic overview of the as
 
 
 Mattia Neroni, Ph.D., Eng. - mattianeroni@yahoo.it - LinkedIn: [mylinkedin]
+
+Website: https://mattianeroni.github.io
 
 Project Link: https://github.com/mattianeroni/derma
 
