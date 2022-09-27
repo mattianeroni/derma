@@ -45,7 +45,6 @@
 
 - [Screens](#screens)
 - [Built With](#built-with)
-- [About the project](#about-the-project)
 - [Architecture](#architecture)
 - [Todo Before Usage](#todo-before-usage)
 - [Todo Development](#todo-development)
@@ -103,10 +102,6 @@ Finally, in the last page, the application provides a dynamic overview of the as
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-
-## About The Project
-
-<p align="right">(<a href="#top">back to top</a>)</p>
 
 
 ## Architecture
