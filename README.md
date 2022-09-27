@@ -106,7 +106,7 @@ Finally, in the last page, the application provides a dynamic overview of the as
 
 ## Architecture
 
-The application has a classic *server side model* application, and, as visible in this very nice draw, it is made of a mobile application that is communicating with a server where a database and the machine learning model can be found.
+The application has a classic *server side model* architecture, and, as visible in this very nice draw, it is made of a mobile application that is communicating with a server where a database and the machine learning model can be found.
 
 ![Architecture](images/architecture.png)
 
