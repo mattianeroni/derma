@@ -113,6 +113,8 @@ Finally, in the last page, the application provides a dynamic overview of the as
 
 The application has a classic *server side model* application, and, as visible in this very nice draw, it is made of a mobile application that is communicating with a server where a database and the machine learning model can be found.
 
+![Architecture](images/architecture.png)
+
 Every time a request is sent to the server, the request headers must contain an authorization code that is verified by the server middleware.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
