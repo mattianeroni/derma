@@ -115,14 +115,17 @@ The application has a classic *server side model* application, and, as visible i
 
 ![Architecture](images/architecture.png)
 
-Every time a request is sent to the server, the request headers must contain an authorization code that is verified by the server middleware.
+Every time a request is sent to the server, the request headers must contain an authorization code that is verified by the server middleware. For important changes that affect the database an *admin token* should also be provided. Once provided, the authorization and admin tokens are encrypted using the `SALT` and compared with the ones stored in the `ENCODED_AUTHORIZATION`, i.e., a dictionary encoded using the `PRIVATE KEY`.
+
+The database currently contains a single table where are stored the dermatologists to consult with their respective contacts and coordinates.
+
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
 ## Todo Before Usage
 
-- [ ] Update the variables in the `.env` files both in the application and in the server. 
+- [ ] Update the variables in the `.env` files both in the application and in the server: be sure that the authorization token and the server URL in the mobile application correspond to the ones encrypted into the server `ENCODED_AUTHORIZATION` generated using the `PRIVATE KEY` (yes, the security is eccessive for this kind of application). The current admin authorization token to modify the database is `FuckYou`.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
